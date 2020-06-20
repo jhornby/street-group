@@ -77,4 +77,21 @@ class PersonTest extends TestCase
 
         new Person('Mr');
     }
+
+    /**
+     * @dataProvider personProvider
+     */
+    public function testGetFormattedName_givenAPerson_formattedName(Person $person, string $expectedName)
+    {
+        $this->assertEquals($expectedName, $person->getFormattedName());
+    }
+
+    public function personProvider()
+    {
+        return [
+            [new Person('Mr John Smith'), 'Mr John Smith'],
+            [new Person('Mrs Jane McMaster'), 'Mrs Jane McMaster'],
+            [new Person('Dr P Gunn'), 'Dr P. Gunn'],
+        ];
+    }
 }

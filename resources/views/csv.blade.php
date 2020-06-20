@@ -23,6 +23,16 @@
 
         <button type="submit">Submit</button>
     </form>
+
+    @isset($people)
+        <ul>
+            @foreach($people->toArray() as $person)
+                <li>{{ $person->getFormattedName() }}</li>
+            @endforeach
+        </ul>
+        {{ dd($people->flatten()) }}
+    @endisset
+
 </div>
 </body>
 </html>

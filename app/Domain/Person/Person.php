@@ -74,4 +74,21 @@ class Person
             'last_name' => $this->lastName,
         ];
     }
+
+    public function getFormattedName(): string
+    {
+        $name = $this->title;
+
+        if ($this->firstName) {
+            $name .= ' ' . $this->firstName;
+        }
+
+        if ($this->initial) {
+            $name .= ' ' . $this->initial;
+        }
+
+        $name .= ' ' . $this->lastName;
+
+        return $name;
+    }
 }
