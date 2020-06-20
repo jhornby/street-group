@@ -38,6 +38,20 @@ class PersonTest extends TestCase
 
     public function testPerson_givenPersonWithTitleInitialAndLastName_titleInitialLastNameSet()
     {
+        $person = new Person('Dr P Smith');
+
+        $expected = [
+            'title' => 'Dr',
+            'initial' => 'P.',
+            'first_name' => null,
+            'last_name' => 'Smith',
+        ];
+
+        $this->assertEquals($person->toArray(), $expected);
+    }
+
+    public function testPerson_givenPersonWithTitleInitialWithAFullStopAndLastName_titleInitialLastNameSet()
+    {
         $person = new Person('Dr P. Smith');
 
         $expected = [

@@ -42,12 +42,12 @@ class Person
 
     private function hasFirstName(array $data): bool
     {
-        return count($data) > 2 && $data[1] !== $this->getFirstLetterOfString($data[1]);
+        return count($data) > 2 && $data[1] !== $this->getFirstLetterOfString($data[1]) && strlen($data[1]) > 1;
     }
 
     private function hasInitial(array $data): bool
     {
-        return count($data) > 2 && $data[1] === $this->getFirstLetterOfString($data[1]);
+        return strlen($data[1]) === 1 || (count($data) > 2 && ($data[1] === $this->getFirstLetterOfString($data[1])));
     }
 
     private function isTitleValid(array $data): bool
