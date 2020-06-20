@@ -4,18 +4,10 @@ declare(strict_types=1);
 
 namespace App\Domain\Person;
 
+use App\Enum\TitleEnum;
+
 class Person
 {
-    private array $titles = [
-        'Dr',
-        'Mr',
-        'Ms',
-        'Mrs',
-        'Miss',
-        'Mister',
-        'Prof',
-    ];
-
     private string $title;
 
     private ?string $firstName = null;
@@ -60,7 +52,7 @@ class Person
 
     private function isTitleValid(array $data): bool
     {
-        return in_array($data[0], $this->titles, true);
+        return in_array($data[0], TitleEnum::getAll(), true);
     }
 
     private function hasRequiredFields(array $data): bool
